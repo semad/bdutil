@@ -169,8 +169,8 @@ generate_bdutil_config() {
   then
     PD_COUNT=1
     PD_DISK_OPTIONS=" -d"
-    PD_DISK_OPTIONS+=" --master_attached_pd_type $ATTACHED_PD_TYPE --master_attached_pd_size_gb $PDSIZE"
-    PD_DISK_OPTIONS+=" --worker_attached_pds_type $ATTACHED_PD_TYPE --worker_attached_pds_size_gb $PDSIZE"
+  #  PD_DISK_OPTIONS+=" --master_attached_pd_type $ATTACHED_PD_TYPE --master_attached_pd_size_gb $PDSIZE"
+  #  PD_DISK_OPTIONS+=" --worker_attached_pds_type $ATTACHED_PD_TYPE --worker_attached_pds_size_gb $PDSIZE"
   fi
 
   MASTER_OPTIONS=" -M $MASTER_MACHINE_TYPE --master_boot_disk_size_gb $MASTER_BOOT_DISK_SIZE"
