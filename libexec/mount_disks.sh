@@ -50,8 +50,10 @@ for DISK_PATH in ${DISK_PATHS}; do
   mkdir -p ${DATAMOUNT}
   MOUNTED_DISKS+=(${DATAMOUNT})
   echo "Mounting '${DISK_ID}' under mount point '${DATAMOUNT}'..."
-  MOUNT_TOOL=/usr/share/google/safe_format_and_mount
-  ${MOUNT_TOOL} -m 'mkfs.ext4 -F' ${DISK_ID} ${DATAMOUNT}
+  #$MOUNT_TOOL=/usr/share/google/safe_format_and_mount
+  #${MOUNT_TOOL} -m 'mkfs.ext4 -F' ${DISK_ID} ${DATAMOUNT}
+  mkfs.ext4 -F ${DISK_ID} 
+  mount ${DISK_ID} ${DATAMOUNT}
 
   # Idempotently update /etc/fstab
   if cut -d '#' -f 1 /etc/fstab | grep -qvw ${DATAMOUNT}; then
