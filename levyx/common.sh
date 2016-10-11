@@ -165,13 +165,13 @@ generate_bdutil_config() {
 
   GENERAL_OPTIONS+=" -f -i $BASE_IMAGE -b $BUCKET -P $VM_PREFIX -n $NUM_NODES -z $ZONE"
 
-  if [[ "${ATTACHED_PD_TYPE}" != "NONE" ]]
-  then
-    PD_COUNT=1
-    PD_DISK_OPTIONS=" -d"
+#  if [[ "${ATTACHED_PD_TYPE}" != "NONE" ]]
+#  then
+#    PD_COUNT=1
+#    PD_DISK_OPTIONS=" -d"
   #  PD_DISK_OPTIONS+=" --master_attached_pd_type $ATTACHED_PD_TYPE --master_attached_pd_size_gb $PDSIZE"
   #  PD_DISK_OPTIONS+=" --worker_attached_pds_type $ATTACHED_PD_TYPE --worker_attached_pds_size_gb $PDSIZE"
-  fi
+#  fi
 
   MASTER_OPTIONS=" -M $MASTER_MACHINE_TYPE --master_boot_disk_size_gb $MASTER_BOOT_DISK_SIZE"
   MASTER_OPTIONS+=" --master_local_ssd_count $MASTER_SSD_COUNT"
