@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# 09_Delete_CLuster
+#
+# Copyright (C) 2013-2015, Levyx, Inc.
+#
+# NOTICE:  All information contained herein is, and remains the property of
+# Levyx, Inc.  The intellectual and technical concepts contained herein are
+# proprietary to Levyx, Inc. and may be covered by U.S. and Foreign Patents,
+# patents in process, and are protected by trade secret or copyright law.
+# Dissemination of this information or reproduction of this material is
+# strictly forbidden unless prior written permission is obtained from Levyx,
+# Inc.  Access to the source code contained herein is hereby forbidden to
+# anyone except current Levyx, Inc. employees, managers or contractors who
+# have executed Confidentiality and Non-disclosure agreements explicitly
+# covering such access.
+
+echo "Running $0"
+[ -z $VM_PREFIX ] && echo "needs -n or --name" && exit -1
+[ ! -e  ./utils/cloud/gcp/common/common.sh ] && echo "Can not find common.sh! Exit -1" && exit -1
+#set +x; 
+source ./utils/cloud/gcp/jenkins/.jenkins.conf
+source ./utils/cloud/gcp/common/common.sh
+#((DEBUG_FLAG)) && set -x
+
+load_env
+show_gcloud_instances "Exisitng instances"
+checkout_bdutil
+generate_bdutil_config
+run_bdutil_delete
+show_gcloud_instances "Remaining instances!"
+((CLI_CLEANUP_FLG)) && clean_up
+delete_env_files
+echo "Finished running $0"
